@@ -13,9 +13,9 @@
     <main class="seccion-padding">
         <div class="contenedor">
             <div class="seccion-encabezado">
-                <span class="seccion-tag">Colección Completa</span>
-                <h1 class="seccion-titulo">Catálogo de Fragancias</h1>
-                <p class="seccion-subtitulo">Explora nuestra selección de perfumes de diseñador de alta fijación y elegancia superior.</p>
+                <span class="seccion-tag">Colección Exclusiva</span>
+                <h1 class="seccion-titulo">Catálogo de Alta Perfumería</h1>
+                <p class="seccion-subtitulo">Explora nuestra cuidada selección de fragancias de diseñador y joyas del mundo árabe.</p>
             </div>
 
             <!-- Barra de Filtros, Búsqueda y Ordenamiento -->
@@ -27,7 +27,7 @@
                         <input 
                             type="text" 
                             id="input-busqueda" 
-                            placeholder="Buscar por nombre, marca o nota olfativa..." 
+                            placeholder="Buscar por fragancia, marca (Dior, Chanel, Lattafa) o notas..." 
                             oninput="buscarFragancia(this.value)"
                         >
                     </div>
@@ -37,6 +37,10 @@
                         <button type="button" class="btn-filtro activo" data-filtro="todos" onclick="filtrarPorCategoria('todos', this)">Todos</button>
                         <button type="button" class="btn-filtro" data-filtro="Hombre" onclick="filtrarPorCategoria('Hombre', this)">Hombre</button>
                         <button type="button" class="btn-filtro" data-filtro="Mujer" onclick="filtrarPorCategoria('Mujer', this)">Mujer</button>
+                        <button type="button" class="btn-filtro" data-filtro="Unisex" onclick="filtrarPorCategoria('Unisex', this)">Unisex</button>
+                        <button type="button" class="btn-filtro" data-filtro="Árabe" onclick="filtrarPorCategoria('Árabe', this)">Árabes</button>
+                        <button type="button" class="btn-filtro" data-filtro="Dior" onclick="filtrarPorCategoria('Dior', this)">Dior</button>
+                        <button type="button" class="btn-filtro" data-filtro="Chanel" onclick="filtrarPorCategoria('Chanel', this)">Chanel</button>
                         <button type="button" class="btn-filtro" data-filtro="Ralph Lauren" onclick="filtrarPorCategoria('Ralph Lauren', this)">Ralph Lauren</button>
                         <button type="button" class="btn-filtro" data-filtro="Yves Saint Laurent" onclick="filtrarPorCategoria('Yves Saint Laurent', this)">YSL</button>
                     </div>
@@ -72,7 +76,7 @@
                     <div class="resumen-totales-box">
                         <div class="fila-total">
                             <span>Total de Perfumes:</span>
-                            <strong id="mini-cart-items">0</strong>
+                            <strong id="mini-cart-items" style="color: #ffffff;">0</strong>
                         </div>
                         <div class="fila-total">
                             <span>Subtotal:</span>

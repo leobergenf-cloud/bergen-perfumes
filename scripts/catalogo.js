@@ -11,6 +11,10 @@ let ordenActivo = "destacado";
 // Asegurar que PRODUCTOS_PERFUMES esté disponible
 const catalogoData = typeof PRODUCTOS_PERFUMES !== "undefined" ? PRODUCTOS_PERFUMES : [];
 
+function normalizarTexto(txt) {
+  return (txt || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+}
+
 // --- RENDERIZADO DEL CATÁLOGO ---
 function renderizarCatalogo(lista = catalogoData) {
   const contenedor = document.getElementById("catalogo-productos");
@@ -20,11 +24,11 @@ function renderizarCatalogo(lista = catalogoData) {
 
   if (lista.length === 0) {
     contenedor.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #fff; border-radius: 12px; border: 1px solid #e5e7eb;">
-        <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">🔍</span>
-        <h3 style="color: var(--color-primario); margin-bottom: 8px;">No encontramos fragancias que coincidan</h3>
-        <p style="color: var(--color-texto-secundario); margin-bottom: 15px;">Intenta con otro término de búsqueda o cambia los filtros seleccionados.</p>
-        <button onclick="limpiarFiltros()" class="btn-filtro activo" style="margin: 0 auto;">Ver todos los perfumes</button>
+      <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; background: var(--color-superficie); border-radius: 12px; border: 1px solid var(--color-borde-dorado);">
+        <span style="font-size: 3rem; display: block; margin-bottom: 15px;">🔍</span>
+        <h3 style="color: #ffffff; font-size: 1.4rem; margin-bottom: 8px;">No encontramos fragancias que coincidan</h3>
+        <p style="color: var(--color-texto-secundario); margin-bottom: 20px;">Prueba buscando otra marca, nota olfativa o selecciona otra categoría.</p>
+        <button onclick="limpiarFiltros()" class="btn-filtro activo" style="margin: 0 auto; padding: 10px 24px;">Ver todos los perfumes</button>
       </div>
     `;
     return;
@@ -82,8 +86,8 @@ function actualizarResumenMiniCart() {
   if (carrito.length === 0) {
     miniLista.innerHTML = `
       <div class="carrito-vacio-texto">
-        <span style="font-size: 2rem; display: block; margin-bottom: 6px;">🛒</span>
-        Tu carrito está vacío.<br>Agrega un perfume para comenzar.
+        <span style="font-size: 2.2rem; display: block; margin-bottom: 8px;">🛒</span>
+        Tu carrito está vacío.<br>Agrega una fragancia para comenzar.
       </div>
     `;
     if (totalItemsElem) totalItemsElem.textContent = "0";
@@ -136,7 +140,7 @@ function filtrarPorCategoria(categoria, btn) {
 
 // Búsqueda en vivo
 function buscarFragancia(termino) {
-  terminoBusqueda = termino.toLowerCase().trim();
+  terminoBusqueda = normalizarTexto(termino);
   aplicarFiltrosYOrden();
 }
 
@@ -152,22 +156,30 @@ function aplicarFiltrosYOrden() {
 
   // Filtro de categoría o marca
   if (filtroActivo !== "todos") {
+    const filtroNorm = normalizarTexto(filtroActivo);
     resultado = resultado.filter(p => {
-      if (filtroActivo === "Hombre" || filtroActivo === "Mujer") {
-        return p.categoria.toLowerCase() === filtroActivo.toLowerCase();
+      const catNorm = normalizarTexto(p.categoria);
+      const marcaNorm = normalizarTexto(p.marca);
+
+      if (filtroNorm === "hombre" || filtroNorm === "mujer" || filtroNorm === "unisex") {
+        return catNorm === filtroNorm;
       }
-      return p.marca.toLowerCase().includes(filtroActivo.toLowerCase());
+      return marcaNorm.includes(filtroNorm) || catNorm.includes(filtroNorm);
     });
   }
 
   // Búsqueda textual
   if (terminoBusqueda) {
-    resultado = resultado.filter(p =>
-      p.nombre.toLowerCase().includes(terminoBusqueda) ||
-      p.marca.toLowerCase().includes(terminoBusqueda) ||
-      p.familia.toLowerCase().includes(terminoBusqueda) ||
-      p.descripcion.toLowerCase().includes(terminoBusqueda)
-    );
+    resultado = resultado.filter(p => {
+      const nombre = normalizarTexto(p.nombre);
+      const marca = normalizarTexto(p.marca);
+      const familia = normalizarTexto(p.familia);
+      const desc = normalizarTexto(p.descripcion);
+      return nombre.includes(terminoBusqueda) ||
+             marca.includes(terminoBusqueda) ||
+             familia.includes(terminoBusqueda) ||
+             desc.includes(terminoBusqueda);
+    });
   }
 
   // Ordenamiento
@@ -206,15 +218,15 @@ function mostrarProductoDetalle() {
   if (!contenedorDetalle) return;
 
   const urlParams = new URLSearchParams(window.location.search);
-  const id = parseInt(urlParams.get("id"), 10) || 1; // Default a Polo Blue si no se pasa id
+  const id = parseInt(urlParams.get("id"), 10) || 1;
 
   const producto = catalogoData.find(p => p.id === id);
 
   if (!producto) {
     contenedorDetalle.innerHTML = `
-      <div style="text-align: center; padding: 60px 20px; background: #fff; border-radius: 12px; margin: 40px auto; max-width: 600px;">
+      <div style="text-align: center; padding: 60px 20px; background: var(--color-superficie); border-radius: 12px; margin: 40px auto; max-width: 600px; border: 1px solid var(--color-borde-dorado);">
         <span style="font-size: 3rem;">⚠️</span>
-        <h2 style="color: var(--color-primario); margin: 15px 0;">Perfume no encontrado</h2>
+        <h2 style="color: #ffffff; margin: 15px 0;">Perfume no encontrado</h2>
         <p style="color: var(--color-texto-secundario); margin-bottom: 25px;">La fragancia seleccionada no existe en nuestro catálogo.</p>
         <a href="catalogo.html" class="btn-hero-primario">Volver al Catálogo</a>
       </div>
@@ -229,7 +241,7 @@ function mostrarProductoDetalle() {
     <nav class="migas-de-pan" aria-label="Migas de pan">
       <a href="${base}index.html">Inicio</a> /
       <a href="${base}paginas/catalogo.html">Catálogo</a> /
-      <span>${producto.nombre}</span>
+      <span style="color: #ffffff;">${producto.nombre}</span>
     </nav>
 
     <div class="detalle-producto-card">
@@ -302,7 +314,7 @@ function mostrarProductoDetalle() {
 
     <!-- Sección Fragancias Sugeridas -->
     <div style="margin-top: 50px;">
-      <h3 style="color: var(--color-primario); font-size: 1.5rem; margin-bottom: 25px; font-weight: 800;">Otras Fragancias que te Podrían Gustar</h3>
+      <h3 style="color: #ffffff; font-size: 1.6rem; margin-bottom: 25px; font-weight: 800;">Otras Fragancias que te Podrían Gustar</h3>
       <div class="productos-grid" id="productos-sugeridos"></div>
     </div>
   `;
@@ -354,9 +366,7 @@ function renderizarSugeridos(idActual) {
 
 // Inicialización
 document.addEventListener("DOMContentLoaded", () => {
-  // Si estamos en catálogo
   if (document.getElementById("catalogo-productos")) {
-    // Si viene parámetro en URL (?categoria=Hombre)
     const urlParams = new URLSearchParams(window.location.search);
     const cat = urlParams.get("categoria");
     if (cat) {
@@ -370,7 +380,6 @@ document.addEventListener("DOMContentLoaded", () => {
     aplicarFiltrosYOrden();
   }
 
-  // Si estamos en detalle de producto
   if (document.getElementById("producto")) {
     mostrarProductoDetalle();
   }

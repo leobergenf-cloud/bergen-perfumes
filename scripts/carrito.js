@@ -51,7 +51,7 @@ function renderizarPaginaCarrito() {
             <button type="button" class="btn-qty" onclick="modificarCantidadItem(${item.id}, 1)">+</button>
           </div>
         </td>
-        <td><strong style="color: var(--color-primario);">${formatearPrecio(itemTotal)}</strong></td>
+        <td><strong style="color: var(--color-dorado);">${formatearPrecio(itemTotal)}</strong></td>
         <td>
           <button type="button" class="btn-eliminar-item" onclick="quitarItemCarrito(${item.id})" title="Eliminar perfume">
             🗑️
@@ -289,17 +289,17 @@ function procesarPedidoFinal(event) {
     modalBody.innerHTML = `
       <div style="text-align: center; padding: 20px 0;">
         <span style="font-size: 3.5rem;">🎉</span>
-        <h2 style="color: var(--color-primario); font-size: 1.8rem; margin: 15px 0 8px 0;">¡Compra Realizada con Éxito!</h2>
+        <h2 style="color: #ffffff; font-size: 1.8rem; margin: 15px 0 8px 0;">¡Compra Realizada con Éxito!</h2>
         <p style="color: var(--color-texto-secundario); font-size: 0.95rem; margin-bottom: 25px;">
           Gracias por confiar en Bergen Perfumes. Tu pedido ha sido confirmado.
         </p>
 
-        <div style="background-color: #f9fafb; border: 1px solid var(--color-borde); border-radius: 8px; padding: 20px; text-align: left; margin-bottom: 25px;">
-          <p><strong>N° de Orden:</strong> <span style="color: var(--color-dorado); font-weight: 800;">#${numOrden}</span></p>
-          <p><strong>Destinatario:</strong> ${nombre}</p>
-          <p><strong>Dirección de Entrega:</strong> ${direccion}, ${comuna}</p>
-          <p><strong>Método de Pago:</strong> ${metodoPago}</p>
-          <p><strong>Total Cancelado:</strong> ${formatearPrecio(nuevoPedido.total)}</p>
+        <div style="background-color: var(--color-superficie-elevada); border: 1px solid var(--color-borde-dorado); border-radius: 8px; padding: 20px; text-align: left; margin-bottom: 25px;">
+          <p style="margin-bottom: 6px;"><strong>N° de Orden:</strong> <span style="color: var(--color-dorado); font-weight: 800;">#${numOrden}</span></p>
+          <p style="margin-bottom: 6px;"><strong>Destinatario:</strong> ${nombre}</p>
+          <p style="margin-bottom: 6px;"><strong>Dirección de Entrega:</strong> ${direccion}, ${comuna}</p>
+          <p style="margin-bottom: 6px;"><strong>Método de Pago:</strong> ${metodoPago}</p>
+          <p style="margin-bottom: 6px;"><strong>Total Cancelado:</strong> <strong style="color: var(--color-dorado);">${formatearPrecio(nuevoPedido.total)}</strong></p>
           <p><strong>Tiempo Estimado:</strong> 24 a 48 hrs hábiles a todo Chile</p>
         </div>
 

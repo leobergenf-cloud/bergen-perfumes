@@ -1,9 +1,9 @@
 /* ==========================================================================
-   BERGEN PERFUMES - ESTILOS PARA CREAR USUARIO / REGISTRO
+   BERGEN PERFUMES - ESTILOS PARA CREAR USUARIO / REGISTRO (DARK NOIR)
    ========================================================================== */
 
 .pantalla-registro {
-  background: linear-gradient(135deg, #f8f9fa 0%, #edf2f7 100%);
+  background-color: var(--color-fondo);
   min-height: 100vh;
 }
 
@@ -11,8 +11,8 @@
   width: 100%;
   max-width: 580px;
   margin: 50px auto;
-  background-color: #ffffff;
-  border: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde-dorado);
   border-radius: var(--radio-lg);
   padding: 40px;
   box-shadow: var(--sombra-xl);
@@ -24,7 +24,7 @@
   font-weight: 800;
   text-transform: uppercase;
   margin-bottom: 6px;
-  color: var(--color-primario);
+  color: #ffffff;
   letter-spacing: 1px;
 }
 
@@ -50,15 +50,15 @@
   font-size: 0.88rem;
   font-weight: 700;
   margin-bottom: 6px;
-  color: var(--color-texto);
+  color: #ffffff;
 }
 
 .entrada {
   width: 100%;
   padding: 12px 14px;
   border: 1.5px solid var(--color-borde);
-  background-color: #fafbfc;
-  color: var(--color-texto);
+  background-color: var(--color-superficie-elevada);
+  color: #ffffff;
   border-radius: var(--radio-sm);
   font-size: 0.95rem;
   box-sizing: border-box;
@@ -66,10 +66,10 @@
 }
 
 .entrada:focus {
-  border-color: var(--color-primario);
-  background-color: #ffffff;
+  border-color: var(--color-dorado);
+  background-color: #1F2B38;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(12, 69, 80, 0.12);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
 }
 
 .ayuda-campo {
@@ -83,20 +83,19 @@
   width: 100%;
   padding: 14px;
   border: none;
-  background-color: var(--color-primario);
-  color: #ffffff;
-  font-weight: 700;
+  background: linear-gradient(135deg, #D4AF37 0%, #B89228 100%);
+  color: #070B0E;
+  font-weight: 800;
   font-size: 1rem;
   border-radius: var(--radio-sm);
   cursor: pointer;
   margin-top: 15px;
-  box-shadow: 0 4px 12px rgba(12, 69, 80, 0.25);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
   transition: var(--transicion);
 }
 
 .boton-registro:hover {
-  background-color: var(--color-dorado);
-  color: var(--color-primario-oscuro);
+  background: linear-gradient(135deg, #E5C358 0%, #D4AF37 100%);
   transform: translateY(-2px);
 }
 
@@ -108,13 +107,12 @@
 }
 
 .enlace-login-box a {
-  color: var(--color-primario);
+  color: var(--color-dorado);
   font-weight: 700;
   text-decoration: none;
 }
 
 .enlace-login-box a:hover {
-  color: var(--color-dorado-hover);
   text-decoration: underline;
 }
 

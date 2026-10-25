@@ -12,9 +12,9 @@ const PEDIDOS_INICIALES = [
     correo: "maria.juana@correo.cl",
     direccion: "Av. Providencia 1234, Providencia",
     metodoPago: "Webpay Plus",
-    items: [{ nombre: "Polo Blue", cantidad: 1, precio: 89990 }],
-    total: 89990,
-    fecha: "03/10/2026",
+    items: [{ nombre: "Sauvage", cantidad: 1, precio: 124990 }],
+    total: 124990,
+    fecha: "24/10/2026",
     estado: "Enviado"
   },
   {
@@ -24,9 +24,9 @@ const PEDIDOS_INICIALES = [
     correo: "bodoque@titirilquen.cl",
     direccion: "Calle Falsa 123, Las Condes",
     metodoPago: "Transferencia",
-    items: [{ nombre: "Big Pony 1", cantidad: 1, precio: 74990 }],
-    total: 74990,
-    fecha: "02/10/2026",
+    items: [{ nombre: "Khamrah", cantidad: 1, precio: 49990 }],
+    total: 49990,
+    fecha: "23/10/2026",
     estado: "Entregado"
   },
   {
@@ -36,9 +36,9 @@ const PEDIDOS_INICIALES = [
     correo: "fran.silva@correo.com",
     direccion: "Ahumada 456, Santiago Centro",
     metodoPago: "Webpay Plus",
-    items: [{ nombre: "Libre", cantidad: 1, precio: 115990 }],
-    total: 115990,
-    fecha: "04/10/2026",
+    items: [{ nombre: "Baccarat Rouge 540", cantidad: 1, precio: 289990 }],
+    total: 289990,
+    fecha: "25/10/2026",
     estado: "En preparación"
   }
 ];
@@ -69,8 +69,8 @@ function cargarDatosAdmin() {
   // Métricas
   const totalVentas = pedidos.reduce((sum, p) => sum + (p.total || 0), 0);
   const totalPedidos = pedidos.length;
-  const totalProductos = typeof PRODUCTOS_PERFUMES !== "undefined" ? PRODUCTOS_PERFUMES.length : 6;
-  const totalClientes = usuarios.length + 3; // Usuarios registrados + clientes demo
+  const totalProductos = typeof PRODUCTOS_PERFUMES !== "undefined" ? PRODUCTOS_PERFUMES.length : 12;
+  const totalClientes = usuarios.length + 3;
 
   const elemVentas = document.getElementById("admin-ventas-total");
   const elemPedidos = document.getElementById("admin-pedidos-total");
@@ -96,14 +96,14 @@ function cargarDatosAdmin() {
 
       return `
         <tr>
-          <td><strong style="color: var(--color-primario);">#${p.id}</strong></td>
+          <td><strong style="color: var(--color-dorado);">#${p.id}</strong></td>
           <td>${p.fecha || "Hoy"}</td>
           <td>
             <strong>${p.cliente}</strong><br>
             <small style="color: var(--color-texto-apagado);">${p.rut || ""}</small>
           </td>
           <td>${itemsTexto}</td>
-          <td><strong>${formatearPrecio(p.total)}</strong></td>
+          <td><strong style="color: var(--color-dorado);">${formatearPrecio(p.total)}</strong></td>
           <td>${p.metodoPago || "Webpay"}</td>
           <td><span class="badge-estado ${claseEstado}">${p.estado || "En preparación"}</span></td>
         </tr>
@@ -121,18 +121,18 @@ function cargarDatosAdmin() {
         <td>${p.marca}</td>
         <td>${p.volumen}</td>
         <td>${p.concentracion}</td>
-        <td>${formatearPrecio(p.precio)}</td>
-        <td><span style="font-weight: 700; color: ${p.stock > 5 ? 'var(--color-exito)' : 'orange'};">${p.stock} un.</span></td>
+        <td><strong style="color: var(--color-dorado);">${formatearPrecio(p.precio)}</strong></td>
+        <td><span style="font-weight: 700; color: ${p.stock > 10 ? 'var(--color-exito)' : 'var(--color-dorado)'};">${p.stock} un.</span></td>
       </tr>
     `).join("");
   }
 }
 
 function simularVentaRapida() {
-  const nombresRandom = ["Camila Valenzuela", "Rodrigo Morales", "Ignacia Castro", "Gabriel Soto"];
+  const nombresRandom = ["Camila Valenzuela", "Rodrigo Morales", "Ignacia Castro", "Gabriel Soto", "Valentina Riquelme"];
   const clienteRandom = nombresRandom[Math.floor(Math.random() * nombresRandom.length)];
   const perfumesRandom = typeof PRODUCTOS_PERFUMES !== "undefined" ? PRODUCTOS_PERFUMES : [];
-  const perfume = perfumesRandom[Math.floor(Math.random() * perfumesRandom.length)] || { nombre: "Polo Blue", precio: 89990 };
+  const perfume = perfumesRandom[Math.floor(Math.random() * perfumesRandom.length)] || { nombre: "Sauvage", precio: 124990 };
 
   const numOrden = "BG-" + Math.floor(100000 + Math.random() * 900000);
 
