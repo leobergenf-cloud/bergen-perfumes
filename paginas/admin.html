@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | Bergen Perfumes</title>
+    <link rel="stylesheet" href="../estilos/estilo.css">
+</head>
+<body>
+    <header class="header" id="header"></header>
+
+    <main class="contenedor-admin">
+        <div class="admin-header-flex">
+            <div>
+                <h1 class="titulo-admin">Panel de Administración</h1>
+                <p style="color: var(--color-texto-secundario); font-size: 0.95rem;">
+                    Resumen general de métricas, pedidos en línea y control de inventario.
+                </p>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button onclick="simularVentaRapida()" class="btn-nav btn-nav-destacado" style="cursor: pointer;">
+                    ⚡ Simular Nueva Venta
+                </button>
+                <button onclick="restablecerDatosAdmin()" class="btn-nav" style="color: var(--color-primario); border-color: var(--color-primario); cursor: pointer;">
+                    🔄 Restablecer Datos
+                </button>
+            </div>
+        </div>
+
+        <!-- Tarjetas de Métricas -->
+        <section class="resumen-metricas">
+            <div class="tarjeta-metrica"> 
+                <h3>Ventas Totales</h3>
+                <p id="admin-ventas-total">$0</p>
+            </div>
+            <div class="tarjeta-metrica dorada">
+                <h3>Pedidos Totales</h3>
+                <p id="admin-pedidos-total">0</p>
+            </div>
+            <div class="tarjeta-metrica">
+                <h3>Perfumes Activos</h3>
+                <p id="admin-productos-total">6</p>
+            </div>
+            <div class="tarjeta-metrica dorada">
+                <h3>Clientes Registrados</h3>
+                <p id="admin-clientes-total">0</p>
+            </div>
+        </section>
+
+        <!-- Tabla de Últimas Compras -->
+        <section class="seccion-admin-box">
+            <h2>🛒 Registro de Pedidos en Tiempo Real</h2>
+            <div class="tabla-admin-wrapper">
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>N° Pedido</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Fragancias Solicitadas</th>
+                            <th>Total</th>
+                            <th>Medio de Pago</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-tabla-pedidos-body">
+                        <!-- Pedidos renderizados por admin.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Control de Stock de Fragancias -->
+        <section class="seccion-admin-box">
+            <h2>📦 Control de Inventario de Fragancias</h2>
+            <div class="tabla-admin-wrapper">
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Fragancia</th>
+                            <th>Marca</th>
+                            <th>Volumen</th>
+                            <th>Concentración</th>
+                            <th>Precio Unitario</th>
+                            <th>Stock Disponible</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-tabla-inventario-body">
+                        <!-- Inventario renderizado por admin.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/admin.js"></script>
+</body>
+</html>

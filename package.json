@@ -1,0 +1,23 @@
+{
+  "name": "bergen-perfumes",
+  "version": "1.0.0",
+  "description": "Plataforma E-Commerce de Alta Perfumería - Evaluación 1 Fullstack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "cmd /c npx -y serve .",
+    "deploy": "cmd /c npx -y vercel --prod"
+  },
+  "keywords": [
+    "ecommerce",
+    "perfumes",
+    "fullstack",
+    "evaluacion1",
+    "html5",
+    "css3",
+    "javascript"
+  ],
+  "author": "Bergen Perfumes",
+  "license": "MIT"
+}

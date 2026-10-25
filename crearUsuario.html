@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes | Bergen Perfumes</title>
+    <link rel="stylesheet" href="estilos/estilo.css">
+    <link rel="stylesheet" href="estilos/estiloCrearUser.css">
+</head>
+<body class="pantalla-registro">
+    <header class="header" id="header"></header>
+
+    <main class="contenedor" style="padding-top: 20px; padding-bottom: 50px;">
+        <div class="tabla-registro">
+            <h1 class="titulo">Crear Cuenta</h1>
+            <p class="subtitulo-registro">Únete a Bergen Perfumes y accede a ofertas exclusivas y seguimiento de pedidos</p>
+
+            <div id="error-registro-general" class="mensaje-error" style="text-align: center; margin-bottom: 15px;"></div>
+
+            <form id="formulario-registro" onsubmit="validarRegistro(event)" novalidate>
+                <!-- Campo RUT -->
+                <div class="campo">
+                    <label class="etiqueta" for="rut">RUT Chileno:</label>
+                    <input type="text" id="rut" class="entrada" placeholder="Ej: 19.011.022-K o 19011022K" required maxlength="12">
+                    <span class="ayuda-campo">Ingresa tu RUT con o sin puntos y guión (verificación automática Módulo 11)</span>
+                    <span class="mensaje-error" id="error-rut"></span>
+                </div>
+
+                <!-- Nombre y Apellidos en dos columnas -->
+                <div class="grid-dos-columnas">
+                    <div class="campo">
+                        <label class="etiqueta" for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" class="entrada" placeholder="Tu nombre" required>
+                        <span class="mensaje-error" id="error-nombre"></span>
+                    </div>
+
+                    <div class="campo">
+                        <label class="etiqueta" for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" class="entrada" placeholder="Tus apellidos" required>
+                        <span class="mensaje-error" id="error-apellidos"></span>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="campo">
+                    <label class="etiqueta" for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" class="entrada" placeholder="nombre@correo.cl o .com" required>
+                    <span class="ayuda-campo">Debe terminar en .cl o .com</span>
+                    <span class="mensaje-error" id="error-correo"></span>
+                </div>
+
+                <!-- Contraseñas en dos columnas -->
+                <div class="grid-dos-columnas">
+                    <div class="campo">
+                        <label class="etiqueta" for="clave">Contraseña:</label>
+                        <input type="password" id="clave" class="entrada" placeholder="Mínimo 8 caracteres" required>
+                        <span class="ayuda-campo">Mayúsculas y minúsculas requeridas</span>
+                        <span class="mensaje-error" id="error-clave"></span>
+                    </div>
+
+                    <div class="campo">
+                        <label class="etiqueta" for="clave2">Repetir Contraseña:</label>
+                        <input type="password" id="clave2" class="entrada" placeholder="Reescribe tu contraseña" required>
+                        <span class="mensaje-error" id="error-clave2"></span>
+                    </div>
+                </div>
+
+                <!-- Dirección -->
+                <div class="campo">
+                    <label class="etiqueta" for="direccion">Dirección de Despacho:</label>
+                    <input type="text" id="direccion" class="entrada" placeholder="Calle, Número, Depto, Comuna" required>
+                    <span class="mensaje-error" id="error-direccion"></span>
+                </div>
+
+                <button type="submit" class="boton-registro">Crear Cuenta</button>
+            </form>
+
+            <div class="enlace-login-box">
+                ¿Ya tienes una cuenta registrada? <a href="paginas/login.html">Inicia sesión aquí</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

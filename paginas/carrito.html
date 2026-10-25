@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras | Bergen Perfumes</title>
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="../estilos/catalogo.css">
+</head>
+<body class="fondo-bergen">
+    <header class="header" id="header"></header>
+
+    <main class="contenedor" style="padding-top: 30px; padding-bottom: 70px;">
+        <div class="seccion-encabezado" style="margin-bottom: 25px;">
+            <span class="seccion-tag">Tu Selección</span>
+            <h1 class="seccion-titulo">Carrito de Fragancias</h1>
+            <p class="seccion-subtitulo">Revisa tus perfumes seleccionados y prepárate para disfrutar de aromas inolvidables.</p>
+        </div>
+
+        <div id="carrito-contenido">
+            <!-- La tabla de productos o el estado vacío se inyectan dinámicamente desde carrito.js -->
+        </div>
+    </main>
+
+    <!-- Modal de Checkout / Pago Simulado -->
+    <div id="modal-checkout" class="modal-backdrop">
+        <div class="modal-caja">
+            <button class="modal-cerrar" onclick="cerrarModalCheckout()">&times;</button>
+            
+            <h2 style="color: var(--color-primario); font-size: 1.6rem; font-weight: 800; margin-bottom: 6px;">
+                Finalizar Compra
+            </h2>
+            <p style="color: var(--color-texto-secundario); font-size: 0.88rem; margin-bottom: 25px;">
+                Ingresa los datos para el despacho de tu pedido en Chile.
+            </p>
+
+            <form onsubmit="procesarPedidoFinal(event)">
+                <div class="campo">
+                    <label class="etiqueta" for="checkout-nombre">Nombre y Apellidos:</label>
+                    <input type="text" id="checkout-nombre" class="entrada" placeholder="Ej: Juan Pérez" required>
+                </div>
+
+                <div class="grid-dos-columnas">
+                    <div class="campo">
+                        <label class="etiqueta" for="checkout-rut">RUT:</label>
+                        <input type="text" id="checkout-rut" class="entrada" placeholder="Ej: 19.011.022-K" required>
+                    </div>
+                    <div class="campo">
+                        <label class="etiqueta" for="checkout-email">Email:</label>
+                        <input type="email" id="checkout-email" class="entrada" placeholder="tu@correo.cl" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label class="etiqueta" for="checkout-direccion">Dirección de Entrega:</label>
+                    <input type="text" id="checkout-direccion" class="entrada" placeholder="Calle, Número, Depto" required>
+                </div>
+
+                <div class="grid-dos-columnas">
+                    <div class="campo">
+                        <label class="etiqueta" for="checkout-comuna">Comuna:</label>
+                        <input type="text" id="checkout-comuna" class="entrada" placeholder="Ej: Providencia" required>
+                    </div>
+                    <div class="campo">
+                        <label class="etiqueta" for="checkout-ciudad">Ciudad / Región:</label>
+                        <input type="text" id="checkout-ciudad" class="entrada" value="Santiago (RM)" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label class="etiqueta">Método de Pago:</label>
+                    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+                        <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; cursor: pointer;">
+                            <input type="radio" name="metodo-pago" value="Webpay Plus (Débito/Crédito)" checked>
+                            <span>💳 Webpay Plus (Tarjetas de Débito y Crédito)</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; cursor: pointer;">
+                            <input type="radio" name="metodo-pago" value="Transferencia Bancaria">
+                            <span>🏦 Transferencia Bancaria Electrónica</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 20px 0; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 700; color: var(--color-texto);">Total a Pagar:</span>
+                    <span id="checkout-total-resumen" style="font-size: 1.4rem; font-weight: 800; color: var(--color-primario);">$0</span>
+                </div>
+
+                <button type="submit" class="boton-registro">
+                    🔒 Confirmar y Pagar Pedido
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer" id="footer"></footer>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/carrito.js"></script>
+</body>
+</html>

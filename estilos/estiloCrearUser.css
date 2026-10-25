@@ -1,0 +1,131 @@
+/* ==========================================================================
+   BERGEN PERFUMES - ESTILOS PARA CREAR USUARIO / REGISTRO
+   ========================================================================== */
+
+.pantalla-registro {
+  background: linear-gradient(135deg, #f8f9fa 0%, #edf2f7 100%);
+  min-height: 100vh;
+}
+
+.tabla-registro {
+  width: 100%;
+  max-width: 580px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  padding: 40px;
+  box-shadow: var(--sombra-xl);
+}
+
+.tabla-registro .titulo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--color-primario);
+  letter-spacing: 1px;
+}
+
+.subtitulo-registro {
+  text-align: center;
+  color: var(--color-texto-secundario);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+.grid-dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+.etiqueta {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--color-texto);
+}
+
+.entrada {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--color-borde);
+  background-color: #fafbfc;
+  color: var(--color-texto);
+  border-radius: var(--radio-sm);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: var(--transicion);
+}
+
+.entrada:focus {
+  border-color: var(--color-primario);
+  background-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(12, 69, 80, 0.12);
+}
+
+.ayuda-campo {
+  font-size: 0.78rem;
+  color: var(--color-texto-apagado);
+  margin-top: 4px;
+  display: block;
+}
+
+.boton-registro {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background-color: var(--color-primario);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 0 4px 12px rgba(12, 69, 80, 0.25);
+  transition: var(--transicion);
+}
+
+.boton-registro:hover {
+  background-color: var(--color-dorado);
+  color: var(--color-primario-oscuro);
+  transform: translateY(-2px);
+}
+
+.enlace-login-box {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.92rem;
+  color: var(--color-texto-secundario);
+}
+
+.enlace-login-box a {
+  color: var(--color-primario);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.enlace-login-box a:hover {
+  color: var(--color-dorado-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .grid-dos-columnas {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .tabla-registro {
+    padding: 25px 20px;
+    margin: 25px auto;
+  }
+}

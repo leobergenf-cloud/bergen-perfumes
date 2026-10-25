@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Exclusivo | Bergen Perfumes</title>
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="../estilos/catalogo.css">
+</head>
+<body class="fondo-bergen">
+    <header class="header" id="header"></header>
+
+    <main class="seccion-padding">
+        <div class="contenedor">
+            <div class="seccion-encabezado">
+                <span class="seccion-tag">Colección Completa</span>
+                <h1 class="seccion-titulo">Catálogo de Fragancias</h1>
+                <p class="seccion-subtitulo">Explora nuestra selección de perfumes de diseñador de alta fijación y elegancia superior.</p>
+            </div>
+
+            <!-- Barra de Filtros, Búsqueda y Ordenamiento -->
+            <div class="catalogo-header-bar">
+                <div class="catalogo-filtros-flex">
+                    <!-- Búsqueda -->
+                    <div class="busqueda-caja">
+                        <span class="busqueda-icono">🔍</span>
+                        <input 
+                            type="text" 
+                            id="input-busqueda" 
+                            placeholder="Buscar por nombre, marca o nota olfativa..." 
+                            oninput="buscarFragancia(this.value)"
+                        >
+                    </div>
+
+                    <!-- Botones de Categorías -->
+                    <div class="filtros-categorias">
+                        <button type="button" class="btn-filtro activo" data-filtro="todos" onclick="filtrarPorCategoria('todos', this)">Todos</button>
+                        <button type="button" class="btn-filtro" data-filtro="Hombre" onclick="filtrarPorCategoria('Hombre', this)">Hombre</button>
+                        <button type="button" class="btn-filtro" data-filtro="Mujer" onclick="filtrarPorCategoria('Mujer', this)">Mujer</button>
+                        <button type="button" class="btn-filtro" data-filtro="Ralph Lauren" onclick="filtrarPorCategoria('Ralph Lauren', this)">Ralph Lauren</button>
+                        <button type="button" class="btn-filtro" data-filtro="Yves Saint Laurent" onclick="filtrarPorCategoria('Yves Saint Laurent', this)">YSL</button>
+                    </div>
+
+                    <!-- Ordenamiento -->
+                    <div class="ordenar-caja">
+                        <label for="select-orden">Ordenar:</label>
+                        <select id="select-orden" onchange="cambiarOrden(this.value)">
+                            <option value="destacado">Recomendados</option>
+                            <option value="precio-menor">Precio: Menor a Mayor</option>
+                            <option value="precio-mayor">Precio: Mayor a Menor</option>
+                            <option value="nombre">Nombre (A - Z)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layout del Catálogo con Mini Resumen Lateral -->
+            <div class="catalogo-layout">
+                <!-- Grid dinámico de fragancias -->
+                <div class="catalogo-grid" id="catalogo-productos">
+                    <!-- Los productos se inyectan automáticamente desde catalogo.js -->
+                </div>
+
+                <!-- Sidebar de Resumen de Carrito -->
+                <aside class="resumen-sidebar">
+                    <h2>🛒 Resumen de Compra</h2>
+                    
+                    <div class="lista-items-mini" id="mini-cart-lista">
+                        <!-- Items del carrito en tiempo real -->
+                    </div>
+
+                    <div class="resumen-totales-box">
+                        <div class="fila-total">
+                            <span>Total de Perfumes:</span>
+                            <strong id="mini-cart-items">0</strong>
+                        </div>
+                        <div class="fila-total">
+                            <span>Subtotal:</span>
+                            <span id="mini-cart-subtotal">$0</span>
+                        </div>
+                        <div class="fila-total">
+                            <span>Envío:</span>
+                            <span id="mini-cart-envio" style="color: var(--color-exito); font-weight: 700;">GRATIS</span>
+                        </div>
+                        <div class="fila-total gran-total">
+                            <span>Total Estimado:</span>
+                            <span id="mini-cart-total">$0</span>
+                        </div>
+                    </div>
+
+                    <a href="carrito.html" class="btn-sidebar-pagar">Ver Carrito & Pagar</a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/catalogo.js"></script>
+</body>
+</html>

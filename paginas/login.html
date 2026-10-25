@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | Bergen Perfumes</title>
+    <link rel="stylesheet" href="../estilos/estilo.css">
+</head>
+<body>   
+    <header class="header" id="header"></header>
+
+    <main class="contenedor-principal">
+        <section class="caja-login">
+            <h2>Iniciar Sesión</h2>
+            <p class="subtitulo-auth">Ingresa a tu cuenta exclusiva de Bergen Perfumes</p>
+
+            <div id="error-general-login" class="mensaje-error" style="margin-bottom: 15px; text-align: center;"></div>
+
+            <form id="form-login" class="formulario-login">
+                <div class="grupo-input">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" placeholder="ejemplo@correo.cl" required>
+                    <span class="mensaje-error" id="error-correo"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="Tu contraseña" required>
+                    <span class="mensaje-error" id="error-password"></span>
+                </div>
+
+                <button type="submit" class="btn-ingresar">Ingresar</button>
+            </form>
+
+            <div class="auth-footer">
+                ¿No tienes una cuenta aún? <a href="../crearUsuario.html">Regístrate aquí</a>
+            </div>
+
+            <div class="credenciales-demo">
+                <strong>🔑 Cuentas de Prueba para Evaluación:</strong>
+                <div>• <strong>Admin:</strong> admin@admin.cl / admin</div>
+                <div>• <strong>Cliente:</strong> cliente@bergen.cl / 12345678</div>
+                <div>• O cualquier usuario nuevo registrado en el formulario.</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/login.js"></script>
+</body>
+</html>
